@@ -23,7 +23,7 @@ public class Player_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _uimanager.SetMaxHealth(_health);
+        _uimanager.SetMaxHealth(_health-10);
         _uimanager.SetHealth(_health);
         _uimanager.SetMaxStemina(_maxStemina);
         _uimanager.SetStemina(_stemina);

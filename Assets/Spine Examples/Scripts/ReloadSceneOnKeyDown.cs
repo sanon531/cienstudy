@@ -38,7 +38,7 @@ public class ReloadSceneOnKeyDown : MonoBehaviour {
 	public KeyCode reloadKey = KeyCode.R;
 
 	void Update () {
-		if (Input.GetKeyDown(reloadKey))
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+		//if (Input.GetKeyDown(reloadKey))
+			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 	}
 }
