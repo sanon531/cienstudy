@@ -10,6 +10,8 @@ public class Player_Manager : MonoBehaviour
     [SerializeField]
     UI_Manager _uimanager;
 
+    public SceneChanger _changeScene;
+
     [SerializeField]
     float _health = 100f;
     [SerializeField]
@@ -56,6 +58,7 @@ public class Player_Manager : MonoBehaviour
                 _isAlive = false;
                 Debug.Log("Game Over");
                 Destroy(gameObject);
+                _changeScene.ChangeSceneByName_asdf("MainMenuScene");
             }
             _uimanager.SetHealth(_health);
 
