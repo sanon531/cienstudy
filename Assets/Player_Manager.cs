@@ -11,6 +11,9 @@ public class Player_Manager : MonoBehaviour
     UI_Manager _uimanager;
 
     public SceneChanger _changeScene;
+    [SerializeField]
+    UITweener tweener;
+
 
     [SerializeField]
     float _health = 100f;
@@ -52,7 +55,10 @@ public class Player_Manager : MonoBehaviour
         if (hit.gameObject.name == "Fire")
         {
             if (_health > 0)
+            {
                 _health -= 1;
+                tweener.ShakeIt();
+            }
             else
             {
                 _isAlive = false;
@@ -67,5 +73,8 @@ public class Player_Manager : MonoBehaviour
 
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
