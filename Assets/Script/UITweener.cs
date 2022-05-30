@@ -23,30 +23,20 @@ public class UITweener : MonoBehaviour
 
     Tween _tween;
 
-    
-
+    [SerializeField]
+    bool _startWithTween = false; 
+        
     // Start is called before the first frame update
     void Start()
     {
-        _tween = _targetRect.DOAnchorPos(new Vector3(), _duration);
-
+        if(_startWithTween)
+            _tween = _targetRect.DOAnchorPos(new Vector3(), 0.1f);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(_triggercode))
-        {
-            //_tween = _targetRect.DOAnchorPos(_targetPos, _duration);
-            _tween = _targetRect.DOShakeAnchorPos(_duration);
-        }
-        else if (Input.GetKeyUp(_triggercode))
-        {
-            _tween.Kill();
-            _targetRect.DOAnchorPos(new Vector3(),_duration);
-            //_tween = _targetRect.DOAnchorPos(new Vector3(), _duration);
-        }
-
     }
+
     public void ShakeIt()
     {
         if (_tween.IsPlaying())
@@ -56,4 +46,10 @@ public class UITweener : MonoBehaviour
         }
         _tween = _targetRect.DOShakeAnchorPos(_duration);
     }
+
+    public void StartMove()
+    {
+        _tween = _targetRect.DOAnchorPos(_targetPos, _duration);
+    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Manager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player_Manager : MonoBehaviour
     [SerializeField]
     UITweener tweener;
 
+    [SerializeField]
+    UITweener _gameOvertweener;
 
     [SerializeField]
     float _health = 100f;
@@ -21,6 +24,8 @@ public class Player_Manager : MonoBehaviour
     float _stemina = 100f;
     float _maxStemina = 100f;
 
+    [SerializeField]
+    Text _GameEndtext;
     [SerializeField]
     float _time = 0f;
 
@@ -52,7 +57,7 @@ public class Player_Manager : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.name == "Fire")
+        if (hit.gameObject.tag == "Enemy" && _isAlive)
         {
             if (_health > 0)
             {
@@ -63,14 +68,18 @@ public class Player_Manager : MonoBehaviour
             {
                 _isAlive = false;
                 Debug.Log("Game Over");
-                Destroy(gameObject);
-                _changeScene.ChangeSceneByName_asdf("MainMenuScene");
+                _gameOvertweener.StartMove();
             }
             _uimanager.SetHealth(_health);
 
         }
 
+        if (hit.gameObject.tag == "Finish") 
+        {
+            _GameEndtext.text = "Game Clear";
 
+            _gameOvertweener.StartMove();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
