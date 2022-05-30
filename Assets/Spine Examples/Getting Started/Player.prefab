@@ -270,6 +270,7 @@ MonoBehaviour:
   forceCrouchVelocity: 30
   forceCrouchDuration: 0.4
   animationHandle: {fileID: 7854055606675088867}
+  isGrounded: 0
 --- !u!114 &7854055606675088866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5503,7 +5504,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9aa2023c2c91b254f9cb0a4fba19af00, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

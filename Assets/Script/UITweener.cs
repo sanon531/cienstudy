@@ -13,6 +13,7 @@ public class UITweener : MonoBehaviour
 
     [SerializeField]
     Vector3 _targetPos;
+
     [SerializeField]
     float _duration;
     [SerializeField]
@@ -22,6 +23,9 @@ public class UITweener : MonoBehaviour
     Color _originColor, _targetColor;
 
     Tween _tween;
+
+    [SerializeField]
+    Ease _Ease = Ease.InFlash; 
 
     [SerializeField]
     bool _startWithTween = false; 
@@ -35,6 +39,21 @@ public class UITweener : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(_triggercode))
+        {
+            Debug.Log("Delet ´©¸§");
+            // _tween = _targetRect.DOAnchorPos(_targetPos);
+            StartMove();
+            _image.DOColor(_targetColor, _duration).SetEase(_Ease);
+        }
+        else if (Input.GetKeyUp(_triggercode))
+        {
+            ReStartMove();
+            Debug.Log("Delet ¶«");
+            _image.DOColor(_originColor, _duration).SetEase(_Ease);
+        }
+
+
     }
 
     public void ShakeIt()
@@ -49,7 +68,12 @@ public class UITweener : MonoBehaviour
 
     public void StartMove()
     {
-        _tween = _targetRect.DOAnchorPos(_targetPos, _duration);
+        _tween = _targetRect.DOAnchorPos(_targetPos, _duration).SetEase(_Ease);
+    }
+
+    public void ReStartMove()
+    {
+        _tween = _targetRect.DOAnchorPos(new Vector3(), _duration).SetEase(_Ease);
     }
 
 }
